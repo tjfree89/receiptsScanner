@@ -6,7 +6,11 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
 class HomeScreenActivity : AppCompatActivity() {
-
+/*
+* When we have a screen that shows accummulated receipt data we can have a spinner
+* that uses a dropdown like video 2 of week 10, to select receipts by category, we can store
+*  all app screen options in a 3 dot options bar at the top of the screen
+* */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
