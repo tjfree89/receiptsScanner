@@ -9,6 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ReceiptsScanner">
+        <activity
+            android:name=".TextRecognitionActivity"
+            android:exported="false" />
         <activity android:name=".HomeScreenActivity" />
         <activity
             android:name=".LoginActivity"
