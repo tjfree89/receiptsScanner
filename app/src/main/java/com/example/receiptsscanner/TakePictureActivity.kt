@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -23,6 +24,7 @@ import com.google.mlkit.vision.text.latin.TextRecognizerOptions
 
 lateinit var recogResult:TextView
 lateinit var btnChoose:Button
+lateinit var back:Button
 
 var intentActivityResultLauncher:ActivityResultLauncher<Intent>?=null
 
@@ -35,17 +37,7 @@ class TakePictureActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_take_picture)
 
-        val back = findViewById<Button>(R.id.picture_back_button)
-
-        back.setOnClickListener { v ->
-            Intent(this, TakePictureActivity::class.java).also {
-//                startActivity(it)
-                finish()
-            }
-        }
-
-        setContentView(R.layout.activity_take_picture)
-
+        back=findViewById(R.id.picture_back_button)
         recogResult=findViewById(R.id.recogResult)
         btnChoose=findViewById(R.id.btnChoose)
 
@@ -68,6 +60,13 @@ class TakePictureActivity : AppCompatActivity() {
             chooseIntent.action=Intent.ACTION_GET_CONTENT
             intentActivityResultLauncher?.launch(chooseIntent)
         }
+
+        back.setOnClickListener { v ->
+            Intent(this, MainActivity::class.java).also{
+                finish()
+            }
+        }
+
     }
 
     private fun convertImageToText(imageUri: Uri) {
