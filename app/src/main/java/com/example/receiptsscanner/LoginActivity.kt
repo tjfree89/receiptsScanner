@@ -52,7 +52,7 @@ class LoginActivity : AppCompatActivity() {
                     login.startAnimation(shake)
                 }else -> {
                 Snackbar.make(email, "You are a genious", Snackbar.LENGTH_SHORT).show()
-                Intent(this, HomeScreenActivity::class.java).also {
+                Intent(this, MainActivity::class.java).also {
                     startActivity(it)
                 }
             }
