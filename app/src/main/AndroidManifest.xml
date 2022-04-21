@@ -12,6 +12,7 @@
         <activity android:name=".TakePictureActivity"></activity>
         <activity android:name=".MainActivity" />
 
+
         <activity
             android:name=".PurchaseHistoryActivity"
             android:exported="false"
