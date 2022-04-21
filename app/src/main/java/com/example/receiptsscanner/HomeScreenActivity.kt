@@ -16,9 +16,16 @@ class HomeScreenActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
         val logout = findViewById<Button>(R.id.btnLogout)
+        val recogScreen = findViewById<Button>(R.id.btnRecog)
 
         logout.setOnClickListener { v ->
             Intent(this, LoginActivity::class.java).also{
+                startActivity(it)
+            }
+        }
+
+        recogScreen.setOnClickListener { v ->
+            Intent(this, TextRecognitionActivity::class.java).also{
                 startActivity(it)
             }
         }
