@@ -77,32 +77,32 @@ class TextRecognitionActivity : AppCompatActivity() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        checkPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE, STORAGE_PERMISSION_CODE)
-    }
-
-    private fun checkPermission(permission: String, requestCode:Int){
-        if(ContextCompat.checkSelfPermission(this@TextRecognitionActivity, permission)== PackageManager.PERMISSION_DENIED){
-            ActivityCompat.requestPermissions(this@TextRecognitionActivity, arrayOf(permission), requestCode)
-        }
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-
-        if(requestCode == STORAGE_PERMISSION_CODE){
-            if(grantResults.isNotEmpty() && grantResults[0]==PackageManager.PERMISSION_GRANTED){
-                Toast.makeText(this@TextRecognitionActivity, "Storage Permission Granted", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this@TextRecognitionActivity, "Storage Permission Denied", Toast.LENGTH_SHORT).show()
-            }
-        }
-
-    }
+//    override fun onResume() {
+//        super.onResume()
+//        checkPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE, STORAGE_PERMISSION_CODE)
+//    }
+//
+//    private fun checkPermission(permission: String, requestCode:Int){
+//        if(ContextCompat.checkSelfPermission(this@TextRecognitionActivity, permission)== PackageManager.PERMISSION_DENIED){
+//            ActivityCompat.requestPermissions(this@TextRecognitionActivity, arrayOf(permission), requestCode)
+//        }
+//    }
+//
+//    override fun onRequestPermissionsResult(
+//        requestCode: Int,
+//        permissions: Array<out String>,
+//        grantResults: IntArray
+//    ) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+//
+//        if(requestCode == STORAGE_PERMISSION_CODE){
+//            if(grantResults.isNotEmpty() && grantResults[0]==PackageManager.PERMISSION_GRANTED){
+//                Toast.makeText(this@TextRecognitionActivity, "Storage Permission Granted", Toast.LENGTH_SHORT).show()
+//            } else {
+//                Toast.makeText(this@TextRecognitionActivity, "Storage Permission Denied", Toast.LENGTH_SHORT).show()
+//            }
+//        }
+//
+//    }
 
 }
