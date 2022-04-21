@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -44,7 +45,7 @@ class TakePictureActivity : AppCompatActivity() {
             }
         }
 
-        setContentView(R.layout.activity_take_picture)
+
 
         recogResult=findViewById(R.id.recogResult)
         btnChoose=findViewById(R.id.btnChoose)
@@ -79,6 +80,7 @@ class TakePictureActivity : AppCompatActivity() {
             val result: Task<Text> = textRecognizer.process(inputImage)
                 .addOnSuccessListener {
                     recogResult.text = it.text
+                    recogResult.movementMethod = ScrollingMovementMethod()
                 }.addOnFailureListener {
                     recogResult.text = "Error : ${it.message}"
                 }
