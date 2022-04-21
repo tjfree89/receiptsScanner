@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ReceiptsScanner" >
         <activity android:name=".TakePictureActivity"></activity>
+        <activity android:name=".SignUpActivity"></activity>
         <activity android:name=".MainActivity" />
 
 
