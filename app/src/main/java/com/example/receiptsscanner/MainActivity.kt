@@ -35,12 +35,18 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-        when{
+        when {
             item.itemId == R.id.Logout -> {
                 finish()
             }
             item.itemId == R.id.purchaseHistory || item.itemId == R.id.purchaseHistoryText -> {
-                Intent(this, PurchaseHistoryActivity::class.java).also{
+
+                    Intent(this, PurchaseHistoryActivity::class.java).also{
+                        startActivity(it)
+                }
+            }
+            item.itemId == R.id.takePicture ->{
+                Intent(this, TakePictureActivity::class.java).also{
                     startActivity(it)
                 }
             }
