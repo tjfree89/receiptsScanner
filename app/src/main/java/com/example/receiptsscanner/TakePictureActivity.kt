@@ -1,20 +1,15 @@
 package com.example.receiptsscanner
 
-import android.Manifest
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.text.method.ScrollingMovementMethod
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import com.google.android.gms.tasks.Task
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.Text
@@ -38,6 +33,7 @@ class TakePictureActivity : AppCompatActivity() {
         setContentView(R.layout.activity_take_picture)
 
         back=findViewById(R.id.picture_back_button)
+
         recogResult=findViewById(R.id.recogResult)
         btnChoose=findViewById(R.id.btnChoose)
 
@@ -78,6 +74,7 @@ class TakePictureActivity : AppCompatActivity() {
             val result: Task<Text> = textRecognizer.process(inputImage)
                 .addOnSuccessListener {
                     recogResult.text = it.text
+                    recogResult.movementMethod = ScrollingMovementMethod()
                 }.addOnFailureListener {
                     recogResult.text = "Error : ${it.message}"
                 }
