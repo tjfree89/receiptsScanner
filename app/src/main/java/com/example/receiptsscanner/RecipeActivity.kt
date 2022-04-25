@@ -2,12 +2,10 @@ package com.example.receiptsscanner
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
-class PurchaseHistoryActivity : AppCompatActivity() {
+class RecipeActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,7 +16,7 @@ class PurchaseHistoryActivity : AppCompatActivity() {
         val back = findViewById<Button>(R.id.history_back_button)
 
         back.setOnClickListener { v ->
-            Intent(this, PurchaseHistoryActivity::class.java).also{
+            Intent(this, RecipeActivity::class.java).also{
 //                startActivity(it)
                 finish()
             }

@@ -25,7 +25,7 @@ class SignUpActivity : AppCompatActivity() {
             }
             item.itemId == R.id.purchaseHistory || item.itemId == R.id.purchaseHistoryText -> {
                 finish().also{
-                    Intent(this, PurchaseHistoryActivity::class.java).also{
+                    Intent(this, RecipeActivity::class.java).also{
                         startActivity(it)
                     }
                 }
