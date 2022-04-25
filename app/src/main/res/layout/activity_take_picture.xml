@@ -60,7 +60,6 @@
         android:id="@+id/confirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
         android:background="#0C2CE1"
         android:text="GET PRICES"
         app:backgroundTint="#0C2CE1"
