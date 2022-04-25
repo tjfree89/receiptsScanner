@@ -14,6 +14,7 @@
         android:scrollbars = "vertical"
         android:text="Your Recognized Text Will Appear Here"
         android:textSize="24sp"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

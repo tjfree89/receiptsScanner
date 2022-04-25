@@ -24,12 +24,10 @@ class LoginActivity : AppCompatActivity() {
 
         val login = findViewById<Button>(R.id.btnLogin)
         val email = findViewById<EditText>(R.id.email)
-        val password = findViewById<EditText>(R.id.password)
         val shake = AnimationUtils.loadAnimation(this,R.anim.shake)
 
         login.setOnClickListener { v ->
             val emailStr = email.text.toString()
-            val passwordStr = password.text.toString()
             when {
                 emailStr.length == 0 -> {
                     Snackbar.make(
@@ -46,12 +44,8 @@ class LoginActivity : AppCompatActivity() {
                         Snackbar.LENGTH_LONG
                     ).show()
                     login.startAnimation(shake)
-                }
-                !passwordStr.contains("password") -> {
-                    Snackbar.make(password, "Incorrect password", Snackbar.LENGTH_LONG).show()
-                    login.startAnimation(shake)
                 }else -> {
-                Snackbar.make(email, "You are a genious", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(email, "You are a genius", Snackbar.LENGTH_SHORT).show()
                 Intent(this, MainActivity::class.java).also {
                     startActivity(it)
                 }

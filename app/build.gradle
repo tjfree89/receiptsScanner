@@ -44,7 +44,6 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:29.3.1')
     implementation 'androidx.navigation:navigation-fragment-ktx:2.4.2'
     implementation 'androidx.navigation:navigation-ui-ktx:2.4.2'
-//    implementation 'com.google.firebase:firebase-ml-vision:'
     implementation 'com.google.mlkit:vision-common:17.1.0'
     implementation 'com.google.android.gms:play-services-mlkit-text-recognition-common:17.0.0'
     implementation 'com.google.android.gms:play-services-mlkit-text-recognition:18.0.0'
