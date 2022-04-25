@@ -13,7 +13,7 @@
             android:name=".RecipeActivity"
             android:exported="false" />
         <activity android:name=".TakePictureActivity" />
-        <activity android:name=".SignUpActivity" />
+     <!-- <activity android:name=".SignUpActivity" />_-->
         <activity android:name=".MainActivity" />
 
         <activity
