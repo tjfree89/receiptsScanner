@@ -5,12 +5,17 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
+import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.gms.tasks.Task
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.Text
 import com.google.mlkit.vision.text.TextRecognition
@@ -30,6 +35,10 @@ lateinit var textRecognizer:TextRecognizer
 class TakePictureActivity : AppCompatActivity() {
     lateinit var recogResult:TextView
     lateinit var btnChoose:Button
+    lateinit var btnConfirm:Button
+//    private lateinit var binding : ActivityMainBinding
+    private lateinit var database : DatabaseReference
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,9 +53,10 @@ class TakePictureActivity : AppCompatActivity() {
             }
         }
 
-
+        btnConfirm=findViewById(R.id.btnConfirm)
         recogResult=findViewById(R.id.recogResult)
         btnChoose=findViewById(R.id.btnChoose)
+        btnConfirm.setVisibility(View.INVISIBLE)
 
         textRecognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
         intentActivityResultLauncher=registerForActivityResult(
@@ -66,6 +76,21 @@ class TakePictureActivity : AppCompatActivity() {
             chooseIntent.type="image/*"
             chooseIntent.action=Intent.ACTION_GET_CONTENT
             intentActivityResultLauncher?.launch(chooseIntent)
+        }
+        btnConfirm.setOnClickListener {
+            val prices = recogResult
+            submitToDatabase(prices)
+        }
+    }
+
+    private fun submitToDatabase(prices: TextView) {
+        database = FirebaseDatabase.getInstance().getReference("receipts")
+        val receipt=receipts(prices.toString())
+        Log.d("test","Got here")
+        database.child(prices.toString()).setValue(receipt).addOnSuccessListener {
+            Toast.makeText(this,"success",Toast.LENGTH_SHORT).show()
+        }.addOnFailureListener{
+            Toast.makeText(this,"fail",Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -93,6 +118,7 @@ class TakePictureActivity : AppCompatActivity() {
         val prices = matches.map{it.groupValues[0]}.joinToString()
 
         recogResult.text = prices
+        btnConfirm.setVisibility(View.VISIBLE)
     }
 
 }
