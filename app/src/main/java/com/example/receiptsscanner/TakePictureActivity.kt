@@ -35,6 +35,8 @@ class TakePictureActivity : AppCompatActivity() {
     lateinit var recogResult:TextView
     lateinit var btnChoose:Button
     lateinit var confirm:Button
+    lateinit var getFoods:Button
+    lateinit var getRecipe:Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,6 +60,8 @@ class TakePictureActivity : AppCompatActivity() {
         recogResult=findViewById(R.id.recogResult)
         btnChoose=findViewById(R.id.btnChoose)
         confirm=findViewById(R.id.confirm)
+        getFoods=findViewById(R.id.get_foods)
+        getRecipe=findViewById(R.id.recipe)
 
         textRecognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
         intentActivityResultLauncher=registerForActivityResult(
@@ -80,9 +84,25 @@ class TakePictureActivity : AppCompatActivity() {
         }
 
         confirm.setOnClickListener {
+            splitPrice(recogResult.text.toString())
             receipts += recogResult.text.toString()
             arrayAdapter = ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, receipts)
             ReceiptListView.adapter = arrayAdapter
+        }
+
+        getFoods.setOnClickListener {
+            grabFoods(recogResult.text.toString())
+            receipts += recogResult.text.toString()
+            arrayAdapter = ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, receipts)
+            ReceiptListView.adapter = arrayAdapter
+        }
+
+        getRecipe.setOnClickListener {
+            exampleFoodGrab(recogResult.text.toString())
+            val intent = Intent(this@TakePictureActivity, PurchaseHistoryActivity::class.java).apply {
+                putExtra("item", recogResult.text.toString())
+            }
+            startActivity(intent)
         }
     }
 
@@ -115,17 +135,17 @@ class TakePictureActivity : AppCompatActivity() {
     private fun grabFoods(rec: String) {
         val reg = Regex("""\b[A-Z][A-Z]+|\b[A-Z]\b""")
         var matches = reg.findAll(rec)
-        val prices = matches.map{it.groupValues[0]}.joinToString()
+        val foods = matches.map{it.groupValues[0]}.joinToString()
 
-        recogResult.text = prices
+        recogResult.text = foods
     }
 
     private fun exampleFoodGrab(rec: String) {
         val reg = Regex("""\b(BLACKBERRIES)\b""")
         var matches = reg.findAll(rec)
-        val prices = matches.map{it.groupValues[0]}.joinToString()
+        val item = matches.map{it.groupValues[0]}.joinToString()
 
-        recogResult.text = prices
+        recogResult.text = item
     }
 
 //    override fun onResume() {
