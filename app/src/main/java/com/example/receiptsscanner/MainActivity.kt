@@ -14,17 +14,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val takePicture = findViewById<Button>(R.id.btnScanPage)
-        val history = findViewById<Button>(R.id.btnHistoryPage)
         val logout = findViewById<Button>(R.id.btnLogout)
 
 
         takePicture.setOnClickListener { v ->
             Intent(this, TakePictureActivity::class.java).also{
-                startActivity(it)
-            }
-        }
-        history.setOnClickListener { v ->
-            Intent(this, PurchaseHistoryActivity::class.java).also{
                 startActivity(it)
             }
         }
@@ -47,12 +41,6 @@ class MainActivity : AppCompatActivity() {
         when {
             item.itemId == R.id.Logout -> {
                 finish()
-            }
-            item.itemId == R.id.purchaseHistory || item.itemId == R.id.purchaseHistoryText -> {
-
-                Intent(this, PurchaseHistoryActivity::class.java).also{
-                    startActivity(it)
-                }
             }
             item.itemId == R.id.takePicture ->{
                 Intent(this, TakePictureActivity::class.java).also{
