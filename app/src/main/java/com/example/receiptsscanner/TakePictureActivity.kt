@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.*
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.ActivityResultLauncher
@@ -139,7 +141,37 @@ class TakePictureActivity : AppCompatActivity() {
 
         recogResult.text = foods
     }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.app_bar_take_pic, menu)
+        return true
+    }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when {
+            item.itemId == R.id.goBack -> {
+                finish()
+            }
+            item.itemId == R.id.Logout -> {
+                finish()
+
+            }
+
+            item.itemId == R.id.purchaseHistory || item.itemId == R.id.purchaseHistoryText -> {
+
+                Intent(this, RecipeActivity::class.java).also{
+                    startActivity(it)
+                }
+            }
+            item.itemId == R.id.takePicture ->{
+                Intent(this, TakePictureActivity::class.java).also{
+                    startActivity(it)
+                }
+            }
+
+        }
+        return true
+    }
 
 
 }

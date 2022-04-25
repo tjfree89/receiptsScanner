@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -21,7 +23,8 @@ class RecipeActivity : AppCompatActivity() {
 
         recBack.setOnClickListener { v ->
             Intent(this, TakePictureActivity::class.java).also {
-                startActivity(it)
+                //startActivity(it)
+                finish() // instead of starting a new activity pop current off stack
             }
         }
         exampleFoodGrab(recipeVal.toString())
@@ -95,5 +98,30 @@ class RecipeActivity : AppCompatActivity() {
 
 
     }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.app_bar_menu, menu)
+        return true
+    }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when {
+            item.itemId == R.id.Logout -> {
+                finish()
+            }
+            item.itemId == R.id.purchaseHistory || item.itemId == R.id.purchaseHistoryText -> {
+
+                Intent(this, RecipeActivity::class.java).also{
+                    startActivity(it)
+                }
+            }
+            item.itemId == R.id.takePicture ->{
+                Intent(this, TakePictureActivity::class.java).also{
+                    startActivity(it)
+                }
+            }
+
+        }
+        return true
+    }
 }
