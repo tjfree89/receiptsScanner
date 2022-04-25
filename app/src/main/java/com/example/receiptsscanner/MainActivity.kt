@@ -8,11 +8,7 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
-    /*
-    * When we have a screen that shows accummulated receipt data we can have a spinner
-    * that uses a dropdown like video 2 of week 10, to select receipts by category, we can store
-    *  all app screen options in a 3 dot options bar at the top of the screen
-    * */
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -25,19 +21,16 @@ class MainActivity : AppCompatActivity() {
         takePicture.setOnClickListener { v ->
             Intent(this, TakePictureActivity::class.java).also{
                 startActivity(it)
-//                finish()
             }
         }
         history.setOnClickListener { v ->
             Intent(this, PurchaseHistoryActivity::class.java).also{
                 startActivity(it)
-//                finish()
             }
         }
 
         logout.setOnClickListener { v ->
             Intent(this, LoginActivity::class.java).also{
-//                startActivity(it)
                 finish()
             }
         }
@@ -46,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.app_bar_menu, menu)
-        return true //insetad of super.onCreateOptionsMenu(menu) means we inflated our menu.
+        return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -66,10 +59,8 @@ class MainActivity : AppCompatActivity() {
                     startActivity(it)
                 }
             }
-//            R.id.purchaseHistory ->}
-//            R.id.purchaseHistoryText ->
 
         }
-        return true //instead of super.onOptionsItemSelected(item)
+        return true
     }
 }

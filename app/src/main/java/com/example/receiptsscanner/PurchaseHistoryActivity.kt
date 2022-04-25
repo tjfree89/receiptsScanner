@@ -14,7 +14,6 @@ class PurchaseHistoryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_purchase_history)
 
-
         val back = findViewById<Button>(R.id.history_back_button)
 
         back.setOnClickListener { v ->

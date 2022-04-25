@@ -8,9 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.util.Log
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -22,39 +20,44 @@ import com.google.mlkit.vision.text.Text
 import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.TextRecognizer
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions
-
-
-
+import android.widget.ArrayAdapter
+import android.widget.ListView
 
 var intentActivityResultLauncher:ActivityResultLauncher<Intent>?=null
 
 lateinit var inputImage: InputImage
 lateinit var textRecognizer:TextRecognizer
 private val STORAGE_PERMISSION_CODE=135
+private var counter = 0
 
 
 class TakePictureActivity : AppCompatActivity() {
     lateinit var recogResult:TextView
     lateinit var btnChoose:Button
-
+    lateinit var confirm:Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_take_picture)
 
+        var arrayAdapter: ArrayAdapter<*>
+        var receipts = arrayOf<String>()
+
+        var ReceiptListView = findViewById<ListView>(R.id.ReceiptList)
+        arrayAdapter = ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, receipts)
+        ReceiptListView.adapter = arrayAdapter
+
         val back = findViewById<Button>(R.id.picture_back_button)
 
         back.setOnClickListener { v ->
             Intent(this, TakePictureActivity::class.java).also {
-//                startActivity(it)
                 finish()
             }
         }
 
-
-
         recogResult=findViewById(R.id.recogResult)
         btnChoose=findViewById(R.id.btnChoose)
+        confirm=findViewById(R.id.confirm)
 
         textRecognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
         intentActivityResultLauncher=registerForActivityResult(
@@ -75,6 +78,12 @@ class TakePictureActivity : AppCompatActivity() {
             chooseIntent.action=Intent.ACTION_GET_CONTENT
             intentActivityResultLauncher?.launch(chooseIntent)
         }
+
+        confirm.setOnClickListener {
+            receipts += recogResult.text.toString()
+            arrayAdapter = ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, receipts)
+            ReceiptListView.adapter = arrayAdapter
+        }
     }
 
     private fun convertImageToText(imageUri: Uri) {
@@ -88,7 +97,6 @@ class TakePictureActivity : AppCompatActivity() {
                 .addOnSuccessListener {
                     recogResult.text = it.text
                     recogResult.movementMethod = ScrollingMovementMethod()
-                    splitPrice(it.text)
                 }.addOnFailureListener {
                     recogResult.text = "Error : ${it.message}"
                 }
@@ -101,9 +109,22 @@ class TakePictureActivity : AppCompatActivity() {
         val matches = reg.findAll(rec)
         val prices = matches.map{it.groupValues[0]}.joinToString()
 
-//        Log.d("Default", rec)
-//        Log.d("matches", matches.toString())
-//        Log.d("Prices", prices)
+        recogResult.text = prices
+    }
+
+    private fun grabFoods(rec: String) {
+        val reg = Regex("""\b[A-Z][A-Z]+|\b[A-Z]\b""")
+        var matches = reg.findAll(rec)
+        val prices = matches.map{it.groupValues[0]}.joinToString()
+
+        recogResult.text = prices
+    }
+
+    private fun exampleFoodGrab(rec: String) {
+        val reg = Regex("""\b(BLACKBERRIES)\b""")
+        var matches = reg.findAll(rec)
+        val prices = matches.map{it.groupValues[0]}.joinToString()
+
         recogResult.text = prices
     }
 
