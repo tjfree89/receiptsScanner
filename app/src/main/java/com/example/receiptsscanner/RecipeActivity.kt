@@ -3,11 +3,14 @@ package com.example.receiptsscanner
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 
 class RecipeActivity : AppCompatActivity() {
     lateinit var recView: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recipe)
@@ -34,8 +37,11 @@ class RecipeActivity : AppCompatActivity() {
         val peppers = peppersMatch.map { it.groupValues[0] }.joinToString()
         var chickenMatch = chickenReg.findAll(rec)
         val chicken = chickenMatch.map { it.groupValues[0] }.joinToString()
+        recView.movementMethod = ScrollingMovementMethod()
 
+        val pic = findViewById<ImageView>(R.id.recipePictureFrame)
         if (chilies != "") {
+
             recView.text = "Chili Cheese Dip III\n Cook: 5mins\n Total: 10mins\n" +
                     "Ingredients:\n" +
                     "* 2(8 ounce) packages cream cheese, softened\n" +
@@ -45,6 +51,7 @@ class RecipeActivity : AppCompatActivity() {
                     "Directions:\n" +
                     "Step 1\n" +
                     "Spread cream cheese on the bottom of a microwave-safe dish. Spread a layer of chili over the cream cheese. Finish with a layer of shredded cheddar cheese. Microwave for 5 minutes or until the cheese melts. Serve with spicy nacho tortilla chips. "
+            pic.setImageResource(R.drawable.chili_cheese)
         } else if (peppers != "") {
             recView.text = "Grandma's Cucumber and Onion Salad\n Cook: 15mins\n" +
                     " Total: 30mins\n Ingredients:\n" +
@@ -64,6 +71,7 @@ class RecipeActivity : AppCompatActivity() {
                     "Mix cucumbers, onions, and green bell pepper together in a bowl.\n" +
                     "Step 3\n" +
                     "Whisk sugar, vinegar, celery seed, and 2 teaspoons salt together in a bowl until dressing is smooth; pour over cucumber mixture and stir until evenly coated.\n"
+            pic.setImageResource(R.drawable.cuc_onion)
         } else if (chicken != "") {
             recView.text = "Chicken and Summer Squash\n Cook: 15mins\n" +
                     " Total: 30mins\n Ingredients:\n" +
@@ -82,6 +90,7 @@ class RecipeActivity : AppCompatActivity() {
                     "Pour off fat from skillet, and add squash, zucchini, and tomato. Season with remaining salt and pepper. Cook and stir over medium-high heat until squash is slightly softened, about 3 minutes. Reduce heat, and return chicken to skillet. Cover partially. Cook until squash is soft, and chicken is white throughout but still juicy, about 5 minutes longer.\n" +
                     "Step 3\n" +
                     "Transfer chicken to platter, and cover with foil to keep warm. Raise heat to high. Cook vegetable mixture, stirring often, until almost all of the liquid has evaporated, about 2 minutes. Arrange vegetables around chicken, and serve.\n"
+            pic.setImageResource(R.drawable.chkn_squash)
         }
 
 
