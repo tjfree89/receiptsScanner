@@ -42,6 +42,12 @@ class MainActivity : AppCompatActivity() {
             item.itemId == R.id.Logout -> {
                 finish()
             }
+            item.itemId == R.id.purchaseHistory || item.itemId == R.id.purchaseHistoryText -> {
+
+                Intent(this, RecipeActivity::class.java).also{
+                    startActivity(it)
+                }
+            }
             item.itemId == R.id.takePicture ->{
                 Intent(this, TakePictureActivity::class.java).also{
                     startActivity(it)

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/purchaseHistory"
-        android:title="Purchases"
+        android:title="Find Recipe"
         android:icon="@drawable/ic_history_foreground"
         app:showAsAction="ifRoom"/>
     <item
