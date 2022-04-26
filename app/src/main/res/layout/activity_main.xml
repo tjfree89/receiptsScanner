@@ -7,20 +7,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#0C2CE1" />
-
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/nestedScrollView"
-        android:layout_width="match_parent"
-
-
-        android:layout_height="match_parent"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
     <ImageView
         android:id="@+id/scannerPic"
@@ -37,13 +23,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/scannerPic"
-        android:textAlignment="center"
-        android:text="Welcome to Robo Chef"
         android:layout_centerHorizontal="true"
-        android:textSize="18sp"
-        android:textStyle="bold"
         android:layout_marginTop="16dp"
-        />
+        android:text="Welcome to Robo Chef"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
 
     <Button

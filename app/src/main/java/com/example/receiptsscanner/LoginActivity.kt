@@ -51,7 +51,7 @@ class LoginActivity : AppCompatActivity() {
                     Snackbar.make(password, "Incorrect password", Snackbar.LENGTH_LONG).show()
                     login.startAnimation(shake)
                 }else -> {
-                Snackbar.make(email, "You are a genious", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(email, "You are a genius", Snackbar.LENGTH_SHORT).show()
                 Intent(this, MainActivity::class.java).also {
                     startActivity(it)
                 }

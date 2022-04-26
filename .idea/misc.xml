@@ -12,25 +12,23 @@
         <entry key="..\:/Users/Freem/Documents/MobileDev/semesterProject/receiptsScanner2/app/src/main/res/drawable/ic_take_photo_background.xml" value="0.25" />
         <entry key="..\:/Users/Freem/Documents/MobileDev/semesterProject/receiptsScanner2/app/src/main/res/drawable/ic_take_photo_foreground.xml" value="0.25" />
         <entry key="..\:/Users/Freem/Documents/MobileDev/semesterProject/receiptsScanner2/app/src/main/res/layout/activity_home.xml" value="0.3292572463768116" />
-        <entry key="..\:/Users/Freem/Documents/MobileDev/semesterProject/receiptsScanner2/app/src/main/res/layout/activity_login.xml" value="0.246875" />
         <entry key="..\:/Users/Freem/Documents/MobileDev/semesterProject/receiptsScanner2/app/src/main/res/layout/activity_main.xml" value="0.3292572463768116" />
         <entry key="..\:/Users/Freem/Documents/MobileDev/semesterProject/receiptsScanner2/app/src/main/res/layout/activity_purchase_history.xml" value="0.3333333333333333" />
-        <entry key="..\:/Users/Freem/Documents/MobileDev/semesterProject/receiptsScanner2/app/src/main/res/layout/activity_recipe.xml" value="0.246875" />
         <entry key="..\:/Users/Freem/Documents/MobileDev/semesterProject/receiptsScanner2/app/src/main/res/layout/activity_sign_up.xml" value="0.14945652173913043" />
         <entry key="..\:/Users/Freem/Documents/MobileDev/semesterProject/receiptsScanner2/app/src/main/res/layout/activity_take_picture.xml" value="0.20208333333333334" />
         <entry key="..\:/Users/Freem/Documents/MobileDev/semesterProject/receiptsScanner2/app/src/main/res/layout/content_purchase_history.xml" value="0.3875" />
         <entry key="..\:/Users/Freem/Documents/MobileDev/semesterProject/receiptsScanner2/app/src/main/res/menu/app_bar_menu.xml" value="0.3388671875" />
-        <entry key="..\:/Users/Freem/Documents/MobileDev/semesterProject/receiptsScanner2/app/src/main/res/menu/app_bar_take_pic.xml" value="0.24307692307692308" />
         <entry key="..\:/Users/Freem/Documents/MobileDev/semesterProject/receiptsScanner2/app/src/main/res/mipmap-anydpi-v26/ic_history.xml" value="0.2095" />
-        <entry key="..\:/Users/Freem/Documents/MobileDev/semesterProject/receiptsScanner2/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.177" />
         <entry key="..\:/Users/Freem/Documents/MobileDev/semesterProject/receiptsScanner2/app/src/main/res/mipmap-anydpi-v26/ic_settings_round.xml" value="0.2095" />
         <entry key="..\:/Users/Freem/Documents/MobileDev/semesterProject/receiptsScanner2/app/src/main/res/mipmap-anydpi-v26/ic_takePhoto.xml" value="0.2095" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_main2.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_purchase_history.xml" value="0.1519756838905775" />
-        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.3125" />
-        <entry key="app/src/main/res/layout/activity_take_picture.xml" value="0.1519756838905775" />
+        <entry key="app/src/main/res/drawable/ic_take_photo_foreground.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_purchase_history.xml" value="0.3125" />
+        <entry key="app/src/main/res/layout/activity_recipe.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_take_picture.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/app_bar_menu.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/app_bar_take_pic.xml" value="0.16203703703703703" />
       </map>
     </option>
   </component>

@@ -1,21 +1,16 @@
 package com.example.receiptsscanner
 
-import android.Manifest
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.*
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import com.google.android.gms.tasks.Task
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.Text
@@ -25,20 +20,18 @@ import com.google.mlkit.vision.text.latin.TextRecognizerOptions
 import android.widget.ArrayAdapter
 import android.widget.ListView
 
-var intentActivityResultLauncher:ActivityResultLauncher<Intent>?=null
 
-lateinit var inputImage: InputImage
-lateinit var textRecognizer:TextRecognizer
-private val STORAGE_PERMISSION_CODE=135
-private var counter = 0
 
 
 class TakePictureActivity : AppCompatActivity() {
-    lateinit var recogResult:TextView
-    lateinit var btnChoose:Button
-    lateinit var confirm:Button
-    lateinit var getFoods:Button
-    lateinit var getRecipe:Button
+    var intentActivityResultLauncher: ActivityResultLauncher<Intent>?=null
+    lateinit var inputImage: InputImage
+    lateinit var textRecognizer:TextRecognizer
+    lateinit var recogResult: TextView
+    lateinit var btnChoose: Button
+    lateinit var confirm: Button
+    lateinit var getFoods: Button
+    lateinit var getRecipe: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -103,13 +96,10 @@ class TakePictureActivity : AppCompatActivity() {
             val intent = Intent(this, RecipeActivity::class.java)
             intent.putExtra("recipe", recogResult.text.toString())
             startActivity(intent)
-
-//            exampleFoodGrab(recogResult.text.toString())
         }
     }
 
     private fun convertImageToText(imageUri: Uri) {
-        print("Converted")
         try{
             //prepare the input image
             inputImage = InputImage.fromFilePath(applicationContext, imageUri)
